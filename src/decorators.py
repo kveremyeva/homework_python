@@ -2,8 +2,8 @@ import logging
 from functools import wraps
 from typing import Any, Callable, Optional
 
-logging.basicConfig(filename=r'E:\Python\PythonProject3\tests\mylog.txt', level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-#logging.basicConfig(filename=r'E:\Python\PythonProject3\tests\mylog.txt', level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(filename=r'E:\Python\PythonProject3\tests\mylog.txt',
+                    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def log(filename: Optional[str] = None) -> Callable[[Callable[..., str]], Callable[..., str]]:

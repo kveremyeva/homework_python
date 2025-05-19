@@ -32,10 +32,10 @@ def transaction_amount(conversion: dict) -> Any:
                 status_code = response.status_code
                 if status_code == 200:
                     result = response.json().get("result")
-                    results.append((result))
+                    results.append((float(result)))
                 else:
                     return f"Не успешный запрос, код ошибки: {status_code}"
-        return float(results)
+        return results
 
     except KeyError:
         print("Ошибка")

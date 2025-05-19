@@ -7,12 +7,18 @@ def get_info_about_transactions(path: str) -> Any:
     try:
         with open(path, encoding='utf-8') as file:
             utils_data = json.load(file)
-            return utils_data
+            if not isinstance(utils_data, list):
+                return []
+            else:
+                return utils_data
     except json.JSONDecodeError:
         print('Ошибка декодирования файла')
         return []
     except FileNotFoundError:
         print('Файл не найден')
+        return []
+    except KeyError:
+        print("Пустой список")
         return []
 
 

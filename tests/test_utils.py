@@ -63,7 +63,7 @@ def test_empty_json_file(get_json_file):
 def test_incorrect_json_file(get_json_file):
     file = get_json_file(data=json.dumps(INCORRECT_JSON))
     result = get_info_about_transactions(file)
-    assert result == '{}'
+    assert result == []
 
 
 def test_not_found_file() -> None:

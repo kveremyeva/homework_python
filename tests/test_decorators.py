@@ -9,7 +9,7 @@ def test_log_decorator(capsys):
         return x + y
 
     my_function(1, 2)
-    with open("mylog.txt") as f:
+    with open(r"E:\Python\PythonProject3\tests\mylog.txt") as f:
         log_content = f.read()
         assert 'my_function ok' in log_content
 
@@ -33,13 +33,13 @@ def test_log_error(capsys):
 
 
 def test_file_logging_error() -> None:
-    @log(filename="mylog.txt")
+    @log(filename=r"E:\Python\PythonProject3\tests\mylog.txt")
     def error_func(x) -> None:
         raise ValueError(f"Неверное значение: {x}")
 
     with pytest.raises(ValueError):
         error_func(1)
 
-    with open("mylog.txt") as f:
+    with open(r"E:\Python\PythonProject3\tests\mylog.txt") as f:
         log_content = f.read()
         assert "my_function error: TypeError. Inputs: (1,), {}" in log_content

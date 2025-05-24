@@ -51,6 +51,7 @@ EXPECTED_RES = [
 
 # Тест на успешный парсинг
 def test_success_reader_file_transactions_csv():
+    """Тест на успешные просмотр файла"""
     with patch("builtins.open", mock_open(read_data=CSV_CONTENT)):
         result = reader_file_transactions_csv("test_path.csv")
         assert isinstance(result, list), "Результат должен быть списком"
@@ -58,6 +59,7 @@ def test_success_reader_file_transactions_csv():
 
 
 def test_empty_file():
+    """ Тест на пустой список"""
     EMPTY_CSV_CONTENT = "id;state;date;amount;currency_name;currency_code;from;to;description"
 
     with patch("builtins.open", mock_open(read_data=EMPTY_CSV_CONTENT)):
@@ -71,6 +73,7 @@ def test_empty_file():
 
 # Тест на отсутствующий файл
 def test_missing_file():
+    """ Проверка отсуствующего файла"""
     with patch("builtins.open", side_effect=FileNotFoundError):
         with pytest.raises(FileNotFoundError):
             reader_file_transactions_csv("missing_file.csv")

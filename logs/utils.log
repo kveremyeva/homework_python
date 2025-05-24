@@ -1,4 +1,15 @@
-2025-05-20 17:04:27,071 - utils - WARNING - Функция get_info_about_transactions запущена
-2025-05-20 17:04:27,071 - utils - INFO - Принимаем на вход JSON-файл ..\data\operations.json
-2025-05-20 17:04:27,072 - utils - INFO - JSON-файл ..\data\operations.json успешно открыт
-2025-05-20 17:04:27,072 - utils - INFO - Возвращен список с данными о финансовых транзакциях
+2025-05-24 18:24:53,301 - utils - WARNING - Функция get_info_about_transactions запущена
+2025-05-24 18:24:53,302 - utils - INFO - Принимаем на вход JSON-файл E:\Python\PythonProject3\data\test_operation.json
+2025-05-24 18:24:53,303 - utils - INFO - JSON-файл E:\Python\PythonProject3\data\test_operation.json успешно открыт
+2025-05-24 18:24:53,303 - utils - INFO - Возвращен список с данными о финансовых транзакциях
+2025-05-24 18:24:53,305 - utils - WARNING - Функция get_info_about_transactions запущена
+2025-05-24 18:24:53,305 - utils - INFO - Принимаем на вход JSON-файл E:\Python\PythonProject3\data\test_operation.json
+2025-05-24 18:24:53,305 - utils - INFO - JSON-файл E:\Python\PythonProject3\data\test_operation.json успешно открыт
+2025-05-24 18:24:53,305 - utils - INFO - Возвращен список с данными о финансовых транзакциях
+2025-05-24 18:24:53,307 - utils - WARNING - Функция get_info_about_transactions запущена
+2025-05-24 18:24:53,307 - utils - INFO - Принимаем на вход JSON-файл E:\Python\PythonProject3\data\test_operation.json
+2025-05-24 18:24:53,307 - utils - INFO - JSON-файл E:\Python\PythonProject3\data\test_operation.json успешно открыт
+2025-05-24 18:24:53,307 - utils - ERROR - Файл пустой
+2025-05-24 18:24:53,309 - utils - WARNING - Функция get_info_about_transactions запущена
+2025-05-24 18:24:53,309 - utils - INFO - Принимаем на вход JSON-файл not_found.json
+2025-05-24 18:24:53,309 - utils - ERROR - Файл не найден [Errno 2] No such file or directory: 'not_found.json'

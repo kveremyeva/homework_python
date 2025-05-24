@@ -26,5 +26,5 @@ def reader_transactions_xlsx(xlsx_file: str) -> list:
 
 
 if __name__ == '__main__':
-    print(reader_transactions_csv())
-    print(reader_transactions_xlsx())
+    print(reader_transactions_csv(r'..\data\transactions.csv'))
+    print(reader_transactions_xlsx(r'..\data\transactions_excel.xlsx'))

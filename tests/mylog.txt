@@ -1,6 +1,1 @@
-2025-05-11 23:36:15,770 - INFO - Starting the function 'my_function' with arguments: (1, 2), {}
-2025-05-11 23:36:15,770 - INFO - my_function ok
-2025-05-11 23:36:43,255 - INFO - Starting the function 'my_function' with arguments: (1, 2), {}
-2025-05-11 23:36:43,256 - INFO - my_function ok
-2025-05-11 23:41:14,392 - INFO - Starting the function 'my_function' with arguments: (1,), {}
-2025-05-11 23:41:14,392 - ERROR - my_function error: TypeError. Inputs: (1,), {}
+

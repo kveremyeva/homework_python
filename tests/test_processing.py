@@ -1,4 +1,7 @@
-from src.processing import filter_by_state, sort_by_date
+import pytest
+
+from src.processing import (filter_by_state, sort_by_date,
+                            search_banking_transactions_by_string, get_count_transactions_category)
 
 
 def test_state_default(sample_state: list) -> None:
@@ -73,3 +76,73 @@ def test_date_decreasing(sample_date: list) -> None:
 
 def test_empty_date() -> None:
     assert sort_by_date([], False) == []
+
+
+@pytest.fixture
+def sample_transactions_by_search_string() -> list:
+    return [
+        {"description": "Перевод организации"},
+        {"description": "Открытие вклада"},
+        {"description": "Перевод со счета на счет"},
+        {"description": "Перевод организации"},
+        {"description": "Перевод с карты на карту"},
+        {"description": "Открытие вклада"},
+        {"description": "Перевод организации"},
+    ]
+
+
+@pytest.fixture
+def sample_transactions_count_category() -> list:
+    return [
+        {"description": "Перевод организации"},
+        {"description": "Открытие вклада"},
+        {"description": "Перевод со счета на счет"},
+        {"description": "Перевод организации"},
+        {"description": "Перевод с карты на карту"},
+        {"description": "Открытие вклада"},
+        {"description": "Перевод организации"},
+        {"description": "Перевод организации"},
+        {"description": "Перевод с карты на карту"},
+        {"description": "Открытие вклада"},
+        {"description": "Перевод организации"},
+    ]
+
+
+@pytest.fixture
+def sample_category() -> list:
+    return ["Перевод организации", "Открытие вклада", "Перевод со счета на счет", "Перевод с карты на карту"]
+
+
+def test_search_banking_trans_empty() -> None:
+    assert search_banking_transactions_by_string([], "вклад") == []
+
+
+def test_search_banking_trans_with_uppercase_string(sample_transactions_by_search_string: list) -> None:
+    result = search_banking_transactions_by_string(sample_transactions_by_search_string, "ПЕРЕВОД")
+    assert len(result) == 5
+    assert all("перевод" in trans["description"].lower() for trans in result)
+
+
+def test_search_banking_trans_no_match(sample_transactions_by_search_string: list) -> None:
+    result = search_banking_transactions_by_string(sample_transactions_by_search_string, "карта")
+    assert result == []
+
+
+def test_get_count_empty_transactions(sample_category: list) -> None:
+    result = get_count_transactions_category([], sample_category)
+    assert result == {}
+
+
+def test_get_count_empty_categories(sample_transactions_count_category: list) -> None:
+    result = get_count_transactions_category(sample_transactions_count_category, [])
+    assert result == {}
+
+
+def test_get_count_match_category(sample_transactions_count_category: list, sample_category: list) -> None:
+    result = get_count_transactions_category(sample_transactions_count_category, sample_category)
+    assert result == {
+        "Перевод организации": 5,
+        "Открытие вклада": 3,
+        "Перевод с карты на карту": 2,
+        "Перевод со счета на счет": 1,
+    }

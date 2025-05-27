@@ -21,13 +21,18 @@ transactions = [
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[dict]:
     """Функция которая выдает транзакции с заданной валютой (например USD)"""
+    transactions_code = []
     for item in transactions:
         if item.get('operationAmount', {}).get('currency', {}).get('code', {}) == currency:
-            yield item
+            transactions_code.append(item)
+        elif item.get('currency_code') == currency:
+            transactions_code.append(item)
+    return transactions_code
 
 
-filter = filter_by_currency(transactions, "USD")
-print(next(filter))
+if __name__ == '__main__':
+    filter = filter_by_currency(transactions, "USD")
+    print(filter)
 
 
 def transaction_descriptions(transactions: list) -> Generator:
@@ -36,8 +41,9 @@ def transaction_descriptions(transactions: list) -> Generator:
         yield item_descriptions['description']
 
 
-descriptions = transaction_descriptions(transactions)
-print(next(descriptions))
+if __name__ == '__main__':
+    descriptions = transaction_descriptions(transactions)
+    print(next(descriptions))
 
 
 def card_number_generator(start: int, stop: int) -> Generator:
@@ -48,5 +54,6 @@ def card_number_generator(start: int, stop: int) -> Generator:
         yield card_number
 
 
-num = card_number_generator(1, 10)
-print(next(num))
+if __name__ == '__main__':
+    num = card_number_generator(1, 10)
+    print(next(num))
